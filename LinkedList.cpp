@@ -19,7 +19,7 @@ LinkedList::~LinkedList()
 	{
 	temp = current;
 	current = current->getNext();
-	free (temp);
+	delete temp;
 	}
 }
 bool LinkedList::isEmpty() const
@@ -131,6 +131,7 @@ bool LinkedList::removeBack()
 	
 	back->setValue(0);
 	back->setNext(nullptr);
+	delete back;
 
 	return true;
 	}
@@ -143,18 +144,14 @@ bool LinkedList::removeFront()
 	}
 	else
 	{
+	Node* temp;
+	temp = m_front;
 	m_front = m_front->getNext();
+	temp->setValue(0);
+	temp->setNext(nullptr);
+	delete temp;
+
 	return true;
 	}
 
 }
-
-
-
-
-
-
-
-
-
-
